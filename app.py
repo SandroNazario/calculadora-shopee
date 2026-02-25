@@ -32,8 +32,9 @@ def contar_acesso():
 # =====================
 @app.route("/")
 def home():
-    contar_acesso()
+    # contar_acesso()  # desativado no Railway
     return render_template("home.html")
+
 
 # =====================
 # analise-vendas-shopee
@@ -42,13 +43,14 @@ def home():
 def analise_vendas_shopee():
     return render_template("analise_vendas_shopee.html")
 
+
 # =====================
 # CALCULADORA
 # =====================
 @app.route("/calculadorashopee", methods=["GET", "POST"])
 def calculadora():
 
-    contar_acesso()
+    # contar_acesso()  # desativado no Railway
 
     resultado1 = None
     resultado2 = None
@@ -111,7 +113,6 @@ def calculadora():
 
             custo = float(request.form.get("custo2"))
 
-            # aceita 20,5 ou 20.5
             margem_desejada = float(
                 request.form.get("margem_desejada").replace(",", ".")
             )
