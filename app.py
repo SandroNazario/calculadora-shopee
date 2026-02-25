@@ -8,31 +8,10 @@ TAXA_FIXA = 4
 
 
 # =====================
-# CONTADOR DE ACESSOS
-# =====================
-def contar_acesso():
-
-    if request.args.get("teste") == "1":
-        return
-
-    try:
-        with open("contador.txt", "r") as f:
-            total = int(f.read())
-    except:
-        total = 0
-
-    total += 1
-
-    with open("contador.txt", "w") as f:
-        f.write(str(total))
-
-
-# =====================
 # HOME
 # =====================
 @app.route("/")
 def home():
-    # contar_acesso()  # desativado no Railway
     return render_template("home.html")
 
 
@@ -49,8 +28,6 @@ def analise_vendas_shopee():
 # =====================
 @app.route("/calculadorashopee", methods=["GET", "POST"])
 def calculadora():
-
-    # contar_acesso()  # desativado no Railway
 
     resultado1 = None
     resultado2 = None
