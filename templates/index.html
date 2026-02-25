@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadoras Shopee</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page-content">
+
+<div class="header">
+    <h1 class="logo-text">Calculadoras Shopee</h1>
+    <p>Calcule seu lucro e descubra o preço ideal de venda em segundos.</p>
+</div>
+
+<div class="grid">
+
+<!-- ================= MODO 1 ================= -->
+<div class="container">
+
+<h2>Calcular Lucro Shopee</h2>
+
+<form method="POST" onsubmit="converterCampos(this)">
+<input type="hidden" name="modo" value="modo1">
+
+<label>Custo do Produto</label>
+<input type="text" class="money" name="custo" required>
+
+<label>Preço de Venda</label>
+<input type="text" class="money" name="preco_venda" required>
+
+<div class="checkbox-group">
+<input type="checkbox" name="frete_gratis" id="f1">
+<label for="f1">Frete grátis</label>
+</div>
+
+<button type="submit">Calcular</button>
+</form>
+
+{% if resultado1 %}
+<div class="resultado">
+<div class="status {{ classe_lucro }}">
+<div class="bolinha"></div>
+<span>{{ status_texto }}</span>
+</div>
+
+<p class="lucro-destaque">Lucro: R$ {{ resultado1.lucro }}</p>
+<p><strong>Custo do Produto:</strong> R$ {{ resultado1.custo }}</p>
+<p><strong>Preço de Venda:</strong> R$ {{ resultado1.preco_venda }}</p>
+<p><strong>Taxa Shopee (14%):</strong> R$ {{ resultado1.taxa_percentual }}</p>
+
+{% if resultado1.taxa_frete_num > 0 %}
+<p><strong>Taxa Frete Grátis (6%):</strong> R$ {{ resultado1.taxa_frete }}</p>
+{% endif %}
+
+<p><strong>Taxa Fixa Shopee:</strong> R$ {{ resultado1.taxa_fixa }}</p>
+<p><strong>Margem de Lucro:</strong> {{ resultado1.margem_real }}%</p>
+</div>
+{% endif %}
+
+</div>
+
+<!-- ================= MODO 2 ================= -->
+<div class="container">
+
+<h2>Calcular Preço Ideal Shopee</h2>
+
+<form method="POST" onsubmit="converterCampos(this)">
+<input type="hidden" name="modo" value="modo2">
+
+<label>Custo do Produto</label>
+<input type="text" class="money" name="custo2" required>
+
+<label>Margem desejada (%)</label>
+<input type="text" name="margem_desejada" class="percentual" required>
+
+<div class="checkbox-group">
+<input type="checkbox" name="frete_gratis2" id="f2">
+<label for="f2">Frete grátis</label>
+</div>
+
+<button type="submit">Calcular</button>
+</form>
+
+{% if resultado2 %}
+<div class="resultado">
+<p class="lucro-destaque">Preço Ideal: R$ {{ resultado2.preco_ideal }}</p>
+<p><strong>Lucro:</strong> R$ {{ resultado2.lucro }}</p>
+<p><strong>Custo do Produto:</strong> R$ {{ resultado2.custo }}</p>
+<p><strong>Margem de Lucro Real:</strong> {{ resultado2.margem_real }}%</p>
+<p><strong>Taxa Shopee (14%):</strong> R$ {{ resultado2.taxa_shopee }}</p>
+
+{% if resultado2.taxa_frete_num > 0 %}
+<p><strong>Taxa Frete Grátis (6%):</strong> R$ {{ resultado2.taxa_frete }}</p>
+{% endif %}
+
+<p><strong>Taxa Fixa Shopee:</strong> R$ {{ resultado2.taxa_fixa }}</p>
+<p><strong>Valor Recebido:</strong> R$ {{ resultado2.valor_recebido }}</p>
+</div>
+{% endif %}
+
+</div>
+
+</div>
+</div>
+
+<footer class="footer">
+<p>© 2026 Ferramentasweb</p>
+<p>Os valores apresentados são estimativas e podem variar conforme regras e taxas da Shopee.</p>
+</footer>
+
+<script>
+function formatarMoeda(valor){
+    valor = valor.replace(/\D/g,'');
+    valor = (valor/100).toFixed(2)+'';
+    valor = valor.replace(".",",");
+    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g,".");
+    return valor;
+}
+
+document.querySelectorAll(".money").forEach(input=>{
+    input.addEventListener("input",function(){
+        this.value=formatarMoeda(this.value);
+    });
+});
+
+function converterCampos(form){
+    form.querySelectorAll(".money").forEach(input=>{
+        input.value=input.value.replace(/\./g,'').replace(',','.');
+    });
+}
+
+/* BLOQUEIA LETRAS NO CAMPO % */
+document.querySelectorAll(".percentual").forEach(input=>{
+    input.addEventListener("input", function(){
+        this.value = this.value.replace(/[^0-9.,]/g,'');
+    });
+});
+</script>
+
+</body>
+</html>
