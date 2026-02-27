@@ -18,15 +18,23 @@ display:flex;
 flex-direction:column;
 }
 
+/* CONTAINER PROFISSIONAL */
+
+.container{
+max-width:1200px;
+margin:0 auto;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
 /* TOPO */
 
 .topo{
 background:white;
-padding:12px 120px;
+padding:12px 20px;
 box-shadow:0 2px 6px rgba(0,0,0,.06);
-display:flex;
-justify-content:space-between;
-align-items:center;
 }
 
 .logo{
@@ -57,7 +65,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px 120px;
+padding:20px;
 }
 
 .box{
@@ -103,22 +111,22 @@ color:#777;
 padding:12px 0;
 }
 
-/* =====================
-   MOBILE AUTOMÁTICO
-===================== */
+/* MOBILE */
 
 @media (max-width:768px){
 
-.topo{
-padding:12px 20px;
+.container{
+flex-direction:column;
+gap:10px;
 }
 
-.main{
-padding:20px;
+.menu-topo{
+display:flex;
+gap:15px;
 }
 
 .menu-topo a{
-margin-left:12px;
+margin-left:0;
 font-size:13px;
 }
 
@@ -132,6 +140,8 @@ height:40px;
 <body>
 
 <header class="topo">
+<div class="container">
+
 <img src="/static/logo-vendacertaweb.png" alt="Venda Certa Web" class="logo">
 
 <nav class="menu-topo">
@@ -139,6 +149,8 @@ height:40px;
 <a href="/ajuda">Ajuda</a>
 <a href="/contato">Contato</a>
 </nav>
+
+</div>
 </header>
 
 <div class="main">
