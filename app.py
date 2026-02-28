@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
+import os
 
 app = Flask(__name__)
 
@@ -14,40 +15,46 @@ TAXA_FIXA = 4
 def home():
     return render_template("home.html")
 
+
 # =====================
-# sobre
+# SOBRE
 # =====================
 @app.route("/sobre")
 def sobre():
     return render_template("sobre.html")
 
+
 # =====================
-# contato
+# CONTATO
 # =====================
 @app.route("/contato")
 def contato():
     return render_template("contato.html")
 
+
 # =====================
-# politica de privacidade
+# POLÍTICA
 # =====================
 @app.route("/politica-de-privacidade")
 def politica_privacidade():
     return render_template("politica_privacidade.html")
 
+
 # =====================
-# termos de uso
+# TERMOS
 # =====================
 @app.route("/termos-de-uso")
 def termos_de_uso():
     return render_template("termos_de_uso.html")
 
+
 # =====================
-# ajuda
+# AJUDA
 # =====================
 @app.route("/ajuda")
 def ajuda():
     return render_template("ajuda.html")
+
 
 # =====================
 # CALCULADORA
@@ -64,9 +71,6 @@ def calculadora():
 
         modo = request.form.get("modo")
 
-        # =====================
-        # MODO 1
-        # =====================
         if modo == "modo1":
 
             custo = float(request.form.get("custo"))
@@ -109,13 +113,9 @@ def calculadora():
                 "margem_real": f"{margem_real:.2f}"
             }
 
-        # =====================
-        # MODO 2
-        # =====================
         if modo == "modo2":
 
             custo = float(request.form.get("custo2"))
-
             margem_desejada = float(
                 request.form.get("margem_desejada").replace(",", ".")
             )
@@ -163,34 +163,22 @@ def calculadora():
     )
 
 
-import os
-
-from flask import Response
-
+# =====================
+# SITEMAP
+# =====================
 @app.route("/sitemap.xml")
 def sitemap():
     xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vendacertaweb.com.br/</loc>
-  </url>
-  <url>
-    <loc>https://vendacertaweb.com.br/calculadorashopee</loc>
-  </url>
-  <url>
-    <loc>https://vendacertaweb.com.br/sobre</loc>
-  </url>
-  <url>
-    <loc>https://vendacertaweb.com.br/ajuda</loc>
-  </url>
-  <url>
-    <loc>https://vendacertaweb.com.br/politica-de-privacidade</loc>
-  </url>
-  <url>
-    <loc>https://vendacertaweb.com.br/termos-de-uso</loc>
-  </url>
+  <url><loc>https://vendacertaweb.com.br/</loc></url>
+  <url><loc>https://vendacertaweb.com.br/calculadorashopee</loc></url>
+  <url><loc>https://vendacertaweb.com.br/sobre</loc></url>
+  <url><loc>https://vendacertaweb.com.br/ajuda</loc></url>
+  <url><loc>https://vendacertaweb.com.br/politica-de-privacidade</loc></url>
+  <url><loc>https://vendacertaweb.com.br/termos-de-uso</loc></url>
 </urlset>"""
     return Response(xml, mimetype="application/xml")
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
