@@ -14,14 +14,40 @@ TAXA_FIXA = 4
 def home():
     return render_template("home.html")
 
+# =====================
+# sobre
+# =====================
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
 
 # =====================
-# analise-vendas-shopee
+# contato
 # =====================
-@app.route("/analise-vendas-shopee")
-def analise_vendas_shopee():
-    return render_template("analise_vendas_shopee.html")
+@app.route("/contato")
+def contato():
+    return render_template("contato.html")
 
+# =====================
+# politica de privacidade
+# =====================
+@app.route("/politica-de-privacidade")
+def politica_privacidade():
+    return render_template("politica_privacidade.html")
+
+# =====================
+# termos de uso
+# =====================
+@app.route("/termos-de-uso")
+def termos_de_uso():
+    return render_template("termos_de_uso.html")
+
+# =====================
+# ajuda
+# =====================
+@app.route("/ajuda")
+def ajuda():
+    return render_template("ajuda.html")
 
 # =====================
 # CALCULADORA
