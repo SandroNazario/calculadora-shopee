@@ -167,10 +167,6 @@ import os
 
 from flask import Response
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
 @app.route("/sitemap.xml")
 def sitemap():
     xml = """<?xml version="1.0" encoding="UTF-8"?>
@@ -195,3 +191,7 @@ def sitemap():
   </url>
 </urlset>"""
     return Response(xml, mimetype="application/xml")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
