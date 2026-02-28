@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request
 import os
 
 app = Flask(__name__)
@@ -161,23 +161,6 @@ def calculadora():
         classe_lucro=classe_lucro,
         status_texto=status_texto
     )
-
-
-# =====================
-# SITEMAP
-# =====================
-@app.route("/sitemap.xml")
-def sitemap():
-    xml = """<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://vendacertaweb.com.br/</loc></url>
-  <url><loc>https://vendacertaweb.com.br/calculadorashopee</loc></url>
-  <url><loc>https://vendacertaweb.com.br/sobre</loc></url>
-  <url><loc>https://vendacertaweb.com.br/ajuda</loc></url>
-  <url><loc>https://vendacertaweb.com.br/politica-de-privacidade</loc></url>
-  <url><loc>https://vendacertaweb.com.br/termos-de-uso</loc></url>
-</urlset>"""
-    return Response(xml, mimetype="application/xml")
 
 
 if __name__ == "__main__":
