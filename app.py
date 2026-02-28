@@ -165,6 +165,33 @@ def calculadora():
 
 import os
 
+from flask import Response
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
+@app.route("/sitemap.xml")
+def sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://vendacertaweb.com.br/</loc>
+  </url>
+  <url>
+    <loc>https://vendacertaweb.com.br/calculadorashopee</loc>
+  </url>
+  <url>
+    <loc>https://vendacertaweb.com.br/sobre</loc>
+  </url>
+  <url>
+    <loc>https://vendacertaweb.com.br/ajuda</loc>
+  </url>
+  <url>
+    <loc>https://vendacertaweb.com.br/politica-de-privacidade</loc>
+  </url>
+  <url>
+    <loc>https://vendacertaweb.com.br/termos-de-uso</loc>
+  </url>
+</urlset>"""
+    return Response(xml, mimetype="application/xml")
