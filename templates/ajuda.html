@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.ajuda{
+max-width:900px;
+margin:20px auto 40px;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.06);
+}
+
+.ajuda h1{
+margin-top:0;
+color:#ee4d2d;
+font-size:34px;
+}
+
+.ajuda h2{
+margin-top:28px;
+font-size:22px;
+color:#333;
+}
+
+.ajuda p{
+font-size:17px;
+line-height:1.7;
+color:#555;
+margin-top:10px;
+}
+
+@media (max-width:768px){
+
+.ajuda{
+padding:24px;
+}
+
+.ajuda h1{
+font-size:28px;
+}
+
+.ajuda h2{
+font-size:20px;
+}
+
+.ajuda p{
+font-size:16px;
+}
+}
+
+</style>
+
+<section class="ajuda">
+
+<h1>Ajuda</h1>
+
+<p>
+Aqui você encontra respostas rápidas para as dúvidas mais comuns sobre as ferramentas da Venda Certa Web.
+</p>
+
+<h2>As ferramentas são gratuitas?</h2>
+<p>
+Sim. Você pode usar as ferramentas disponíveis livremente, sem necessidade de cadastro.
+</p>
+
+<h2>Preciso instalar algo?</h2>
+<p>
+Não. Tudo funciona diretamente no navegador, tanto no computador quanto no celular.
+</p>
+
+<h2>Os resultados são automáticos?</h2>
+<p>
+Sim. Os cálculos são feitos automaticamente com base nos valores que você informa.
+</p>
+
+<h2>Posso usar mesmo vendendo em plataformas diferentes?</h2>
+<p>
+Sim. As ferramentas são criadas para ajudar vendedores online em geral, independentemente da plataforma utilizada.
+</p>
+
+<h2>Novas ferramentas serão adicionadas?</h2>
+<p>
+Sim. Estamos sempre trabalhando para adicionar novas soluções úteis para vendedores digitais.
+</p>
+
+<h2>Não encontrei minha dúvida</h2>
+<p>
+Se precisar de ajuda adicional, entre em contato pela página de contato.
+</p>
+
+</section>
+
+{% endblock %}

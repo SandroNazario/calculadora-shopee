@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.contato{
+max-width:900px;
+margin:20px auto 40px;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.06);
+}
+
+.contato h1{
+margin-top:0;
+color:#ee4d2d;
+font-size:34px;
+}
+
+.contato h2{
+margin-top:28px;
+font-size:22px;
+color:#333;
+}
+
+.contato p{
+font-size:17px;
+line-height:1.7;
+color:#555;
+margin-top:10px;
+}
+
+.aviso{
+margin-top:25px;
+padding:14px 18px;
+background:#f8f8f8;
+border-left:4px solid #ee4d2d;
+border-radius:6px;
+font-size:16px;
+color:#555;
+}
+
+@media (max-width:768px){
+
+.contato{
+padding:24px;
+}
+
+.contato h1{
+font-size:28px;
+}
+
+.contato h2{
+font-size:20px;
+}
+
+.contato p{
+font-size:16px;
+}
+
+.aviso{
+font-size:15px;
+}
+}
+
+</style>
+
+<section class="contato">
+
+<h1>Contato</h1>
+
+<p>
+A Venda Certa Web está em constante evolução para criar ferramentas úteis para vendedores online.
+</p>
+
+<p>
+Se você tiver sugestões, dúvidas ou quiser entrar em contato, em breve teremos um canal direto disponível aqui.
+</p>
+
+<h2>Estamos evoluindo</h2>
+
+<p>
+Neste momento estamos focados em melhorar as ferramentas e a experiência do site. Em breve, esta página contará com um formulário de contato completo.
+</p>
+
+<div class="aviso">
+📩 Em breve: formulário de contato direto disponível nesta página.
+</div>
+
+</section>
+
+{% endblock %}

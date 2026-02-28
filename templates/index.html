@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadoras Shopee</title>
+{% extends "base.html" %}
+
+{% block title %}Calculadora Shopee – Calcular Lucro e Preço Ideal | Venda Certa Web{% endblock %}
+
+{% block content %}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
 
 <div class="page-content">
 
 <div class="header">
-    <h1 class="logo-text">Calculadoras Shopee</h1>
-    <p>Calcule seu lucro e descubra o preço ideal de venda em segundos.</p>
+    <h1 class="logo-text">Calcule seu lucro e preço ideal na Shopee</h1>
+    <p>Ferramenta gratuita para vendedores online.</p>
+
+    <p style="margin-top:10px;color:#666;font-size:14px;">
+        ✔️ Grátis &nbsp; • &nbsp; ✔️ Sem cadastro &nbsp; • &nbsp; ✔️ Resultado imediato
+    </p>
 </div>
 
 <div class="grid">
@@ -20,7 +22,7 @@
 <!-- ================= MODO 1 ================= -->
 <div class="container">
 
-<h2>Calcular Lucro Shopee</h2>
+<h2>📊 Calcular Lucro Shopee</h2>
 
 <form method="POST" onsubmit="converterCampos(this)">
 <input type="hidden" name="modo" value="modo1">
@@ -65,7 +67,7 @@
 <!-- ================= MODO 2 ================= -->
 <div class="container">
 
-<h2>Calcular Preço Ideal Shopee</h2>
+<h2>💰 Calcular Preço Ideal Shopee</h2>
 
 <form method="POST" onsubmit="converterCampos(this)">
 <input type="hidden" name="modo" value="modo2">
@@ -106,11 +108,6 @@
 </div>
 </div>
 
-<footer class="footer">
-<p>© 2026 Ferramentasweb</p>
-<p>Os valores apresentados são estimativas e podem variar conforme regras e taxas da Shopee.</p>
-</footer>
-
 <script>
 function formatarMoeda(valor){
     valor = valor.replace(/\D/g,'');
@@ -132,7 +129,6 @@ function converterCampos(form){
     });
 }
 
-/* BLOQUEIA LETRAS NO CAMPO % */
 document.querySelectorAll(".percentual").forEach(input=>{
     input.addEventListener("input", function(){
         this.value = this.value.replace(/[^0-9.,]/g,'');
@@ -140,5 +136,4 @@ document.querySelectorAll(".percentual").forEach(input=>{
 });
 </script>
 
-</body>
-</html>
+{% endblock %}

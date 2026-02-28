@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Venda Certa Web{% endblock %}</title>
+
+<style>
+
+/* =====================
+   CONFIGURAÇÕES GERAIS
+===================== */
+
+html, body{
+height:100%;
+margin:0;
+}
+
+body{
+font-family:Arial;
+background:#f4f6f8;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* CONTAINER PADRÃO (TOPO E CONTEÚDO) */
+
+.layout-container{
+max-width:1200px;
+margin:0 auto;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* =====================
+   ÁREA DE CONTEÚDO
+===================== */
+
+.main-content{
+flex:1; /* empurra o rodapé para baixo */
+width:100%;
+}
+
+.content-container{
+max-width:1200px;
+margin:0 auto;
+width:100%;
+padding:20px;
+box-sizing:border-box;
+}
+
+/* =====================
+   TOPO
+===================== */
+
+.topo{
+background:white;
+padding:12px 20px;
+box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+.logo{
+height:50px;
+width:auto;
+}
+
+.menu-topo a{
+margin-left:20px;
+text-decoration:none;
+color:#444;
+font-weight:bold;
+font-size:14px;
+}
+
+.menu-mobile{
+display:none;
+font-size:32px;
+cursor:pointer;
+line-height:1;
+}
+
+/* =====================
+   RODAPÉ
+===================== */
+
+.footer{
+text-align:center;
+font-size:13px;
+color:#777;
+padding:14px 0 20px 0;
+}
+
+.footer-line{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.footer-line a{
+text-decoration:none;
+color:#777;
+}
+
+.sep{
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width:768px){
+
+.container{
+flex-direction:row;
+}
+
+.menu-topo{
+display:none;
+position:absolute;
+top:75px;
+right:20px;
+background:white;
+box-shadow:0 6px 16px rgba(0,0,0,.15);
+padding:18px 22px;
+border-radius:10px;
+flex-direction:column;
+gap:14px;
+min-width:160px;
+}
+
+.menu-topo a{
+margin:0;
+font-size:18px;
+}
+
+.menu-topo.ativo{
+display:flex;
+}
+
+.menu-mobile{
+display:block;
+}
+
+.logo{
+height:48px;
+}
+
+.footer-line{
+flex-direction:column;
+gap:6px;
+}
+
+.sep{
+display:none;
+}
+
+.content-container{
+padding:16px;
+}
+}
+
+.topo a{
+text-decoration:none;
+}
+
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-50WSRPNYV8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-50WSRPNYV8');
+</script>
+
+</head>
+
+<body>
+
+<!-- TOPO -->
+
+<header class="topo">
+<div class="layout-container">
+
+<a href="/">
+<img src="/static/logo-vendacertaweb.png" alt="Venda Certa Web" class="logo">
+</a>
+
+<div class="menu-mobile" id="menuIcon" onclick="toggleMenu()">☰</div>
+
+<nav class="menu-topo" id="menuTopo">
+<a href="/sobre">Sobre</a>
+<a href="/ajuda">Ajuda</a>
+<a href="/contato">Contato</a>
+</nav>
+
+</div>
+</header>
+
+<!-- CONTEÚDO DINÂMICO (CORREÇÃO AQUI) -->
+
+<main class="main-content">
+<div class="content-container">
+{% block content %}{% endblock %}
+</div>
+</main>
+
+<!-- RODAPÉ -->
+
+<footer class="footer">
+<div class="footer-line">
+<span>© 2026 Venda Certa Web</span>
+<span class="sep">|</span>
+<a href="/politica-de-privacidade">Política de Privacidade</a>
+<span class="sep">|</span>
+<a href="/termos-de-uso">Termos de Uso</a>
+</div>
+</footer>
+
+<script>
+function toggleMenu(){
+const menu = document.getElementById("menuTopo");
+const icon = document.getElementById("menuIcon");
+
+menu.classList.toggle("ativo");
+
+if(menu.classList.contains("ativo")){
+icon.innerHTML = "✖";
+}else{
+icon.innerHTML = "☰";
+}
+}
+</script>
+
+</body>
+</html>
